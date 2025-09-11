@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="body-wrapper">
+        <div class="body-container">
+            <div class="batas">
+                <div class="body-main">
+                    <div class="body-sub-left">
+                        <div class="left-top">
+                            <div class="h1-left-top">
+                                <h1>Hi, User</h1>
+                                <h1>Welcome to elBMI</h1>
+                            </div>
+                            <p>Hitung BMI-mu dengan mudah dan temukan apakah berat badanmu termasuk sehat, kurang, atau berlebih. Yuk, mulai sekarang jadi lebih peduli dengan tubuhmu!</p>
+                            <p>Indeks Massa Tubuh (BMI) adalah alat sederhana yang digunakan untuk menilai apakah berat badan seseorang sesuai dengan tinggi badannya. Dengan menghitung BMI, seseorang dapat mengetahui apakah berat badannya tergolong ideal atau perlu perhatian lebih.</p>
+                        </div>
+                        <div class="left-bottom">
+                            <div class="x-logos">
+                                <img src="images/x-logos.png" alt="">
+                                <img src="images/x-logos.png" alt="">
+                            </div>
+                            <div class="x-main">
+                                “Mulailah menyayangi diri sendiri dengan hidup yang sehat.”
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-sub-center">
+                        <div class="sub-center-title">
+                            <h1>Calculate Your BMI</h1>
+                            <div class="gender">
+                                <div class="male" id="male">
+                                    <div class="logo-gender">
+                                        <img src="images/man.png" alt="">
+                                    </div>
+                                    <h3>MALE</h3>
+                                </div>
+                                <div class="female" id="female">
+                                    <div class="logo-gender">
+                                        <img src="images/female.png" alt="">
+                                    </div>
+                                    <h3>FEMALE</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-center-center">
+                            <div class="center-title">
+                                <h3>HEIGHT</h3>
+                            </div>
+                            <div class="slider-container" id="slider">
+                                <div class="slider-sub">
+                                   <label for="height">HEIGHT</label>
+                                <div>
+                                    <input type="radio" name="height-unit" id="cm" checked>
+                                    <label for="cm">cm</label>
+                                    <input type="radio" name="height-unit" id="m">
+                                    <label for="m">m</label>
+                                    <input type="radio" name="height-unit" id="ftin">
+                                    <label for="ftin">ft/in</label>
+                                </div> 
+                                </div>
+                                <span id="height-value">170 cm</span>
+                                <input type="range" id="height" min="100" max="220" value="170">
+                            </div>
+
+                        </div>
+                        <div class="sub-center-bottom">
+                            <div class="bottom-left">
+                                <div class="bottom-left-weight">
+                                   <h3>WEIGHT</h3>
+                                 <div>
+                                    <input type="radio" name="weight-unit" id="kg" checked>
+                                    <label for="kg">kg</label>
+                                    <input type="radio" name="weight-unit" id="lbs">
+                                    <label for="lbs">lbs</label>
+                                </div>  
+                                </div>             
+                                <div class="bottom-right">
+                                    <div class="number-box">
+                                        <span id="weight-value">50</span> <p id="satuan">kg</p>
+                                    </div>
+                                    <div class="buttons">
+                                        <button id="minusW">-</button>
+                                        <button id="plusW">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-left">
+                                 <H3>AGE</H3>
+                                 <div class="bottom-right">
+                                    <div class="number-box">
+                                        <span id="age">19</span>
+                                    </div>
+                                    <div class="buttons">
+                                        <button id="minusA">-</button>
+                                        <button id="plusA">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body-sub-right">
+                        <div class="sub-right-title">
+                            <h1>Your Result</h1>
+                        </div>
+                        <div class="circle-bmi">
+                            <h3>BMI</h3>
+                            <h1 id="bmiresult">23.3</h1>
+                            <h3 id="kategori">Normal</h3>
+                        </div>
+                        <div class="track-bmi">
+                            <div class="track-man" id="trackman">
+                                <div class="info-tracker">
+                                    <div class="info">Underweight</div>
+                                    <div class="colon">: &lt; 20 </div>
+                                </div>
+                                <div class="info-tracker">
+                                    <div class="info">Normal</div>
+                                    <div class="colon">: 20 - 24.9</div>
+                                </div>
+                                <div class="info-tracker">
+                                    <div class="info">Overweight</div>
+                                    <div class="colon">: 25 - 29.9</div>
+                                </div>
+                                <div class="info-tracker">
+                                    <div class="info">Obese</div>
+                                    <div class="colon"> :>= 30</div>
+                                </div>
+                            </div>
+
+                            <div class="track-woman" id="trackwoman">
+                                <div class="info-tracker">
+                                <div class="info">Underweight</div>
+                                    <div class="colon">: &lt; 19 </div>
+                                </div>
+                                <div class="info-tracker">
+                                    <div class="info">Normal</div>
+                                    <div class="colon">: 19 - 23.9</div>
+                                </div>
+                                <div class="info-tracker">
+                                    <div class="info">Overweight</div>
+                                    <div class="colon">: 24 - 28.9</div>
+                                </div>
+                                <div class="info-tracker">
+                                    <div class="info">Obese</div>
+                                    <div class="colon"> :>= 29</div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="img-bmi-container" id="bmiimg">
+                            <img src="images/bmipic.png" alt="">
+                        </div>
+                        <div class="button-calculate">
+                            <button id="calculate">Calculate</button>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
