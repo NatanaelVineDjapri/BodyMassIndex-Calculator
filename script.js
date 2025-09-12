@@ -16,7 +16,9 @@ const kgRadio = document.getElementById('kg');
 const lbsRadio = document.getElementById('lbs');
 const satuan= document.getElementById('satuan');
 const trackman = document.getElementById('trackman');
+const trackkidman = document.getElementById('trackkidman');
 const trackwoman = document.getElementById('trackwoman');
+const trackkidwoman = document.getElementById('trackkidwoman');
 const calculate = document.getElementById('calculate');
 const bmiresult = document.getElementById('bmiresult');
 const kategori = document.getElementById('kategori');
@@ -73,36 +75,90 @@ function updateHeight() {
     }
 }
 
-function category(gender, bmi) {
+function categoryAdult(gender, bmi) {
     let cat = '';
     if (gender === 'male') {
-        if (bmi < 20) cat = 'Underweight';
-        else if (bmi < 25) cat = 'Normal';
-        else if (bmi < 30) cat = 'Overweight';
-        else cat = 'Obese';
+        if (bmi < 20) {
+            cat = 'Underweight';
+        } else if (bmi < 25) {
+            cat = 'Normal';
+        } else if (bmi < 30) {
+            cat = 'Overweight';
+        } else {
+            cat = 'Obese';
+        }
     } else if (gender === 'female') {
-        if (bmi < 19) cat = 'Underweight';
-        else if (bmi < 24) cat = 'Normal';
-        else if (bmi < 29) cat = 'Overweight';
-        else cat = 'Obese';
+        if (bmi < 19) {
+            cat = 'Underweight';
+        } else if (bmi < 24) {
+            cat = 'Normal';
+        } else if (bmi < 29) {
+            cat = 'Overweight';
+        } else {
+            cat = 'Obese';
+        }
     }
     return cat;
 }
 
-function showCategory(gender){
-    document.querySelector('.track-bmi').style.display="flex";
-    if(gender ==='male'){
-        trackman.style.display = "block";
-        trackwoman.style.display = "none";
-         bmiimg.style.display = "none";
-    } else if(gender === 'female'){
-        trackman.style.display = "none";
-        trackwoman.style.display = "block";
-         bmiimg.style.display = "none";
-    } else{
-        trackman.style.display = "none";
-        trackwoman.style.display = "none";
+function categoryChild(gender, bmi,age) {
+    let min = 0;
+    let max = 0;
+
+    if (gender === 'male') {
+        if (age <= 5) {
+            min = 13; max = 17;
+        } else if (age >= 6 && age <= 8) {
+            min = 13; max = 18;
+        } else if (age >= 9 && age <= 12) {
+            min = 14; max = 20;
+        } else if (age >= 13 && age <= 17) {
+            min = 16; max = 22;
+        }
+    } else if (gender === 'female') {
+        if (age <= 5) {
+            min = 13; max = 17;
+        } else if (age >= 6 && age <= 8) {
+            min = 13; max = 18;
+        } else if (age >= 9 && age <= 12) {
+            min = 14; max = 20;
+        } else if (age >= 13 && age <= 17) {
+            min = 16; max = 22;
+        }
     }
+
+    if (bmi < min) {
+        return 'Underweight';
+    } else if (bmi <= max) {
+        return 'Normal';
+    } else {
+        return 'Overweight/Obese';
+    }
+}
+
+function showCategory() {
+    document.querySelector('.track-bmi').style.display = "flex";
+
+    trackman.style.display = "none";
+    trackwoman.style.display = "none";
+    trackkidman.style.display = "none";
+    trackkidwoman.style.display = "none";
+
+    if (age < 18) {
+        if (gender === 'male') {
+            trackkidman.style.display = 'block';
+        } else if (gender === 'female') {
+            trackkidwoman.style.display = 'block';
+        }
+    } else {
+        if (gender === 'male') {
+            trackman.style.display = 'block';
+        } else if (gender === 'female') {
+            trackwoman.style.display = 'block';
+        }
+    }
+
+    bmiimg.style.display = "none";
 }
 
 male.addEventListener('click',function(){
@@ -172,10 +228,17 @@ calculate.addEventListener('click',function(){
         return
     }
 
-    showCategory(gender)
+    showCategory()
     const bmi = calculateBMI();
-    const cat = category(gender,bmi);
+     console.log('Age:', age, 'Gender:', gender, 'BMI:', bmi);
+    let x = '';
+
+    if (age < 18) {
+        x = categoryChild(gender, bmi,age);
+    } else {
+        x = categoryAdult(gender, bmi);
+    }
     bmiresult.textContent = bmi;
-    kategori.textContent = cat;
+    kategori.textContent = x;
 })
 
