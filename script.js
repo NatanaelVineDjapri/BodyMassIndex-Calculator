@@ -30,8 +30,12 @@ let weight = 50;
 let age = 19;
 let height = parseInt(heightSlider.value);
 
+updateHeight()
+updateWeight();
+ageText.textContent = age;
+
 function calculateBMI(){
-    const bmi = (weight/(height*height)).toFixed(2)
+    const bmi = Number((weight / (height * height)).toFixed(2));
     return bmi;
 }
 
